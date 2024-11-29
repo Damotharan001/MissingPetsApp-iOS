@@ -41,11 +41,9 @@ class MissingPetsDetailsViewController: BaseViewController {
     }
     
     func getMissingPetsList(){
-        self.showLoader()
         if self.isViaGuestMode{
             ViewModels().getMissingData(uID: Auth.auth().currentUser?.uid ?? "") { success in
                 self.userList = success
-                self.hideLoader()
                 self.tableView.reloadData()
             } failure: { failure in
                 print("failure", failure?.localizedDescription ?? "")
@@ -53,7 +51,6 @@ class MissingPetsDetailsViewController: BaseViewController {
         }else{
             ViewModels().getParticularRecord(key: "uID", value: Auth.auth().currentUser?.uid ?? "") { success in
                 self.userList = success
-                self.hideLoader()
                 self.tableView.reloadData()
             } failure: { failure in
                 print("failure", failure?.localizedDescription ?? "")

@@ -19,6 +19,7 @@ class PetsDetailsViewController: BaseViewController {
     var userList: MissingPet?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Missing Pets Details"
         self.petNameLbl.text = self.userList?.petName
         self.descriptionLbl.text = self.userList?.description
         let imageUrl = self.userList?.petImage ?? ""

@@ -28,7 +28,7 @@ class AddPetsDetailsViewController: BaseViewController {
     var storageRef:StorageReference?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.title = "Add Missing Pets Details"
+        self.navigationItem.title = "Add Missing Pets Details"
     }
     @IBAction func selectLocationAction(_ sender: Any) {
         let VC = AppConstant.storyBoard.instantiateViewController(withIdentifier: "LocationViewController") as? LocationViewController
@@ -134,6 +134,20 @@ extension AddPetsDetailsViewController: GetAddress{
         self.address = address
         self.locationBtn.setTitle(address, for: .normal)
         self.dismiss(animated: true, completion: nil)
+    }
+}
+extension AddPetsDetailsViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
+}
+extension AddPetsDetailsViewController: UITextViewDelegate{
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
 }
 

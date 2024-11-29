@@ -63,3 +63,8 @@ class LoginViewController: BaseViewController {
         }
     }
 }
+extension LoginViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
+}
